@@ -1,159 +1,264 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工具导航 - eooce Collection</title>
-    <style>
-        :root {
-            --primary-color: #3b82f6;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常用工具导航 · Fritz</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  <!-- Google Font -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0;
-        }
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-light: #eef2ff;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-sub: #6b7280;
+      --border: #e5e7eb;
+      --radius: 14px;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #818cf8;
+        --primary-light: rgba(99,102,241,0.15);
+        --bg: #0f172a;
+        --card-bg: #020617;
+        --text-main: #e5e7eb;
+        --text-sub: #94a3b8;
+        --border: #1e293b;
+      }
+    }
 
-        p.subtitle {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-        }
+    html[data-theme="dark"] {
+      --primary: #818cf8;
+      --primary-light: rgba(99,102,241,0.15);
+      --bg: #0f172a;
+      --card-bg: #020617;
+      --text-main: #e5e7eb;
+      --text-sub: #94a3b8;
+      --border: #1e293b;
+    }
 
-        .search-box {
-            max-width: 500px;
-            margin: 20px auto 0;
-            position: relative;
-        }
+    html[data-theme="light"] {
+      --primary: #6366f1;
+      --primary-light: #eef2ff;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-sub: #6b7280;
+      --border: #e5e7eb;
+    }
 
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: 1px solid #cbd5e1;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-            box-sizing: border-box;
-        }
+      body {
+        background: radial-gradient(circle at top, #eef2ff, var(--bg) 40%);
+      }
+    }
 
-        .search-box input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
+    * { box-sizing: border-box; }
 
-        .category {
-            margin-bottom: 40px;
-        }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #eef2ff, var(--bg) 40%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
 
-        .category-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 5px solid var(--primary-color);
-            color: var(--text-main);
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border: 1px solid transparent;
-        }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-color);
-        }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+    }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background-color: #eff6ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 24px;
-            color: var(--primary-color);
-        }
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: all .25s ease;
+    }
 
-        .card-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+    .theme-toggle:hover {
+      transform: rotate(15deg) scale(1.05);
+      border-color: var(--primary);
+    }
 
-        .card-desc {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-        }
+    header p {
+      color: var(--text-sub);
+      font-size: 1.1rem;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: var(--text-sub);
-            font-size: 0.9rem;
-            padding-bottom: 20px;
-        }
+    .search-box {
+      max-width: 520px;
+      margin: 28px auto 0;
+      position: relative;
+    }
 
-        @media (max-width: 600px) {
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-        }
-    </style>
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px 14px 46px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+      transition: all .25s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(99,102,241,.15);
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: .6;
+    }
+
+    /* Category */
+    .category {
+      margin-bottom: 56px;
+    }
+
+    .category-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(99,102,241,.08), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 30px rgba(0,0,0,.08);
+      border-color: var(--primary);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 14px;
+      border-radius: 16px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: .88rem;
+      color: var(--text-sub);
+    }
+
+    footer {
+      text-align: center;
+      margin: 80px 0 20px;
+      font-size: .9rem;
+      color: var(--text-sub);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>常用工具导航</h1>
-        <p class="subtitle"></p>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="搜索工具..." onkeyup="filterTools()">
-        </div>
-    </header>
+  <header>
+    <div class="top-bar">
+      <h1>常用工具导航</h1>
+      <div class="theme-toggle" id="themeToggle" title="切换主题">
+        🌙
+      </div>
+    </div>
+    <p>快速 · 高效 · 一站式常用工具集合</p>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索工具名称或描述…" onkeyup="filterTools()" />
+    </div>
+  </header>
 
     <div class="category">
         <h2 class="category-title">🔍 常用推荐</h2>
@@ -186,6 +291,8 @@
         </div>
     </div>
 
+
+    
     <div class="category">
         <h2 class="category-title">🌐 网络与站长工具</h2>
         <div class="grid">
@@ -271,37 +378,50 @@
                 <div class="card-title">订阅转换</div>
                 <div class="card-desc">通用订阅链接转换</div>
             </a>
-            <a href="javascript:void(0)" onclick="alert('通常指自建 WebSSH 服务，推荐搜索 \'WebSSH\' GitHub 项目')" class="card">
-                <div class="card-icon">💻</div>
-                <div class="card-title">WebSSH</div>
-                <div class="card-desc">网页版 SSH 终端</div>
+            <a href="https://acl4ssr-sub.github.io/" target="_blank" class="card">
+                <div class="card-icon">🔗</div>
+                <div class="card-title">老王导航</div>
+                <div class="card-desc">多种工具导航页</div>
             </a>
         </div>
     </div>
 
-    <footer>
-        <p>Generated by AI Assistant | Copyright © 2025 Fritz</p>
-    </footer>
+  <footer>
+    © 2025 Fritz · 🤗
+  </footer>
 </div>
 
 <script>
-    function filterTools() {
-        const input = document.getElementById('searchInput');
-        const filter = input.value.toLowerCase();
-        const cards = document.getElementsByClassName('card');
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
 
-        for (let i = 0; i < cards.length; i++) {
-            const title = cards[i].getElementsByClassName('card-title')[0];
-            const desc = cards[i].getElementsByClassName('card-desc')[0];
-            const txtValue = (title.textContent || title.innerText) + " " + (desc.textContent || desc.innerText);
-            
-            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
+  const themes = ['dark', 'light', 'system'];
+  let current = localStorage.getItem('theme') || 'dark';
+
+  function applyTheme(mode) {
+    root.removeAttribute('data-theme');
+    if (mode === 'light') root.setAttribute('data-theme', 'light');
+    if (mode === 'dark') root.setAttribute('data-theme', 'dark');
+
+    toggle.textContent = mode === 'dark' ? '🌙' : mode === 'light' ? '☀️' : '🖥️';
+    localStorage.setItem('theme', mode);
+  }
+
+  toggle.onclick = () => {
+    current = themes[(themes.indexOf(current) + 1) % themes.length];
+    applyTheme(current);
+  };
+
+  applyTheme(current);
+
+  function filterTools() {
+    const filter = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.getElementsByClassName('card');
+    for (let card of cards) {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? '' : 'none';
     }
+  }
 </script>
 
 </body>
