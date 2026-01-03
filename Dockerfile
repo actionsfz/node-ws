@@ -3,6 +3,7 @@ FROM node:20-alpine3.20
 WORKDIR /tmp
 
 COPY index.js index.html package.json ./
+COPY favicon/ ./favicon/
 
 EXPOSE 7860
 
